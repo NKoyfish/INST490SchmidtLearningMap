@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>PGCPS Environmental Literacy Tracker</title>
+   <link
+   rel="stylesheet"
+   href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""
+   />
+   <script
+   src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""
+   ></script>
+   <link
+   rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+   />
+   <link type="text/css" rel="stylesheet" href="styles.css" />
+   <link rel="stylesheet" href="styles2.css">
+</head>
+
+
+<body>
+
+   <!-- Links (sit on top) -->
+   <div class="top">
+      <div class="row padding black">
+         <div class="col s4">
+            <a href="#" class="button block black" onclick="openHome()">HOME</a>
+         </div>
+         <div class="col s4">
+            <a href="#survey_info" class="button block black" onclick="openSurveyInfo()">SURVEY INFO</a>
+         </div>
+         <div class="col s4">
+            <a href="#menu" class="button block black"
+               onclick="openDocumentation()">DOCUMENTATION</a>
+         </div>
+      </div>
+   </div>
+   <!-- <div class="section top-section">
+      <div class="container">
+         <nav class="navbar has-shadow is-success is-fixed-top">
+            <div class="navbar-brand">
+               <span class="navbar-item">
+                  <img src="/images/WS_logo.png" alt="" style="max-height: 40px;" class='px-2'>
+               </span>
+               <a role="button" class="navbar-burger"  id="burger" aria-label="menu" aria-expanded="false" data-target="navLinks">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span> 
+               </a>
+            </div>
+            <div class="container has-text-centered" id="HomeTitle">
+
+                  <h2>PGCPS Green Literacy Tracker</h2>
+
+               
+            </div>
+            <div class="navbar-menu" id="navLinks">
+
+               <div class="navbar-start px-2">
+                  <a href="./index_test.html" class="navbar-item">Home</a>
+                  <a href="./survey_info.html" class="navbar-item">Survey Info</a>
+                  <a href="./documentation.html" class="navbar-item">Documentation</a>
+               </div>
+            </div>
+         </nav>
+      </div>
+   </div> -->
+
+   <!-- Header with image -->
+   <header class="bgimg display-container grayscale-min" id="home">
+      <div class="display-middle center">
+         <span style="font-size: 40px; font-weight: bold; color: white; background-color: green">PGCPS Environmental Literacy Tracker</span>
+      </div>
+   </header>
+
+   <!-- Add a background color and large text to the whole page -->
+   <div class="sand grayscale large">
+
+      <div id="homeWrapper">
+         <div id="school_ratings_filters">
+            <fieldset class="group">
+               <legend>School Ratings</legend>
+               <div class="form-group">
+                  	<input type="radio" id="srf_rb_all" name="filter" value="srf_all"
+                     onclick="displayMarkersBySectionRating('srf_all');" /><label data-toggle="tooltip" data-placement="bottom" title="Include all sections">All</label>
+                  	<input type="radio" id="srf_rb_s1" name="filter" value="srf_section1"
+                     onclick="displayMarkersBySectionRating('srf_section1');" /><label data-toggle="tooltip" data-placement="bottom" title="General, Garden, Recycling, Composting">Section 1</label>
+                  	<input type="radio" id="srf_rb_s2" name="filter" value="srf_section2"
+                     onclick="displayMarkersBySectionRating('srf_section2');" /><label data-toggle="tooltip" data-placement="bottom" title="Water Conservation and Pollution Prevention">Section 2</label>
+					<input type="radio" id="srf_rb_s3" name="filter" value="srf_section3"
+                     onclick="displayMarkersBySectionRating('srf_section3');" /><label data-toggle="tooltip" data-placement="bottom" title="Energy Conservation">Section 3</label>
+                    <input type="radio" id="srf_rb_s4" name="filter" value="srf_section4"
+                     onclick="displayMarkersBySectionRating('srf_section4');" /><label data-toggle="tooltip" data-placement="bottom" title="Habitat Restoration and Structures for Environmental Learning">Section 4</label>
+                    <input type="radio" id="srf_rb_s5" name="filter" value="srf_section5"
+                     onclick="displayMarkersBySectionRating('srf_section5');" /><label data-toggle="tooltip" data-placement="bottom" title="Responsible Transportation and Healthy School Environment">Section 5</label>                    
+               </div>
+            </fieldset>
+         </div>
+         
+         <div id="env_features_filters">
+            <fieldset class="group">
+               <legend>Environmental Features</legend>
+               <div class="form-group">
+                  <select id="feature_filters_drop_down" size="1"
+                     onchange="displayMarkersByFeature()">
+                     <option value="">None</option>
+                  </select>
+               </div>
+            </fieldset>
+         </div>         
+
+         <div id="areaCoveredId">
+         	<button type="button" onclick="displayAreaCovered();">PGC Perimeter</button>
+         	<button type="button" onclick="showDuplicates();">Show Duplicates</button>
+         	<button type="button" onclick="updateDatabase();">Update Database</button>
+         </div>
+      </div>
+     
+     <div id="surveyInfoWrapper">
+   		<div id="school_name_filters">
+            <fieldset class="group">
+               <legend>School Name</legend>
+               <div class="form-group">
+                  <select id="school_name_filters_drop_down" size="1"
+                     onchange="loadDataBySchoolName()">
+                     <option value="">None</option>
+                  </select>
+               </div>
+            </fieldset>
+         </div>
+	</div>
+      
+      <!-- Map Container -->
+      <div class="container" id="map">
+         <div class="content" style="max-width: 80%">
+            <div id="mapid" class="map"></div>
+         </div>
+      </div>
+
+
+      <!-- Survey Info Container -->
+      <div class="container">
+         <div class="content" id="survey_info" style="max-width: 100%" />
+         <div id="surveyInfoContent" style="overflow-y: auto; overflow-x: auto; width: 100%"></div>         
+      </div>
+
+
+      <!-- Documentation Container -->
+      <div class="container">
+         <div class="content" id="documentation" style="max-width: 100%;" />
+      </div>
+
+      <!-- End page content -->
+   </div>
+
+   <!-- Footer -->
+   <footer class="center light-grey padding-48 large">
+      <p></p>
+   </footer>
+   <script src="pgcps_functions.js"></script>
+   <script src="script.js"></script>
+</body>
+</html>
