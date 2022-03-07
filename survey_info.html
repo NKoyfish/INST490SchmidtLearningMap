@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PGCPS Environmental Literacy Tracker - Survey Data</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+<!-- <link type="text/css" rel="stylesheet" href="styles.css"> -->
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    
+    <!-- <script src="pgcps_functions.js"></script> -->
+    </head>
+
+    <body>
+        <div class="section top-section">
+            <div class="container">
+               <nav class="navbar has-shadow is-success is-fixed-top">
+                  <div class="navbrand-container">
+                     <div class="navbar-brand">
+                        <span class="navbar-item">
+                           <img src="/images/WS_logo.png" alt="" style="max-height: 40px;" class='px-2'>
+                        </span>
+                     </div>  
+   
+                     <div class="container has-text-centered has-text-primary-light" id="HomeTitle">
+   
+                        <h2>PGCPS Green Literacy Tracker</h2>
+   
+                     
+                     </div>
+                     <div class="navbar-brand">
+                        <a role="button" class="navbar-burger"  id="burger" aria-label="menu" aria-expanded="false" data-target="navLinks">
+                           <span aria-hidden="true"></span>
+                           <span aria-hidden="true"></span>
+                           <span aria-hidden="true"></span> 
+                        </a>
+                     </div>  
+                  </div>
+                  
+                     
+                  
+                  
+                  <div class="navbar-menu" id="navLinks">
+                     <!-- <div class="navbar-start"> -->
+                        
+                        
+                     <!-- </div> -->
+                     <div class="navbar-end mr-6 pr-6">
+                        <a href="./index.html" class="navbar-item">Home</a>
+                        <a href="./survey_info.html" class="navbar-item">Survey Info</a>
+                        <a href="./documentation.html" class="navbar-item">Documentation</a>
+                     </div>
+                  </div>
+               </nav>
+            </div>
+        </div>
+
+        <div class="section middle-section">
+           <div class="columns is-centered">
+               <div class="column is-half">
+              
+                  <div class="box has-text-centered has-background-success">
+                        <div class="field">
+                           <label class="label has-text-primary-light">School Name</label>
+                           <div class="control">
+                              <div class="select dropdown">
+                                 <select class="survey-dropDown">
+                                    <option>Select dropdown</option>
+                                    
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+               </div>
+            </div>
+            <div class="columns is-centered">
+               <div class="column results">
+                  <div class="section1_results">
+                        <!-- <div class="box">
+                           <div class="results">
+                              
+                           </div> -->
+                        <!-- </div> -->
+                  </div> 
+                  
+               </div>
+
+               <div class="column">
+                  <div class="section2_results"></div>
+               </div>
+               <div class="column">
+                  <div class="section3_results"></div>
+               </div>
+               <div class="column">
+                  <div class="section4_results"></div>
+               </div>
+               <div class="column">
+                  <div class="section5_results"></div>
+               </div>
+                  
+               
+            </div>
+
+             
+         </div>
+            
+
+        <script src="./javascript/bulma-script.js"></script>
+        <script src="./javascript/survey.js" type="module"></script>
+    </body>
+</html>

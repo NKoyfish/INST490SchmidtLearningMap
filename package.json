@@ -1,0 +1,34 @@
+{
+  "name": "pgcps_enviro_literacy490",
+  "version": "1.0.0",
+  "description": "<p>Title of Project: Prince George County Public School - Literacy 490</p>\r <p>Description of Project: Helps visually represent how environment-friendly schools are throughout PGC</p>\r <p>Link to App: http://localhost/</p>\r <p>Target Browsers: Google Chrome, Mozilla Firefox, Safari, Microsoft Edge</p>\r <p>Link to User Manual: https://github.com/asandin218/pgcps_enviro_literacy490/README.md </p><br/>\r <p>Link to Developer Manual: See below. </p><br/>",
+  "main": "project_server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon project_server.js"
+  },
+  "dependencies": {
+    "command": "^0.0.1",
+    "eslint": "^8.1.0",
+    "express": "^4.17.1",
+    "livereload": "^0.9.3",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.14",
+    "requests": "^0.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asandin218/pgcps_enviro_literacy490.git"
+  },
+  "author": "asandin218",
+  "license": "ISC",
+  "engines": {
+    "node": ">=12.16.3",
+    "npm": ">=6.14.4"
+  },
+  "bugs": {
+    "url": "https://github.com/asandin218/pgcps_enviro_literacy490/issues"
+  },
+  "homepage": "https://github.com/asandin218/pgcps_enviro_literacy490#readme"
+}

@@ -1,0 +1,162 @@
+#mapid {
+    max-width: 100%;
+    height:800px;
+}
+.middle-section{
+    padding-top: 1rem;
+}
+
+.tablink{
+    padding: 1rem;
+}
+
+.tab-link:hover{
+    color: inherit;
+}
+
+.doc-section{
+    padding: 2rem;
+    padding-top: 0px;
+}
+
+.tabs-section{
+    padding-top: 0px;
+}
+
+.dark-grey,.dark-grey:hover{
+    color:#fff!important;
+    background-color:#48c78e!important
+}
+
+.button{
+    max-width: 130px;
+}
+
+.button-box{
+    display:flex;
+    justify-content:start;
+    justify-items:right;
+}
+
+.button-box p{
+    margin-right: 5px;
+    font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color:white;
+}
+
+.toggle-btn{
+    width: 40px;
+    height: 26px;
+    background: gray;
+    border-radius: 15px;
+    padding: 5px;
+    transition: all 300ms ease-in-out;
+}
+
+.toggle-btn>.inner-circle{
+    width: 17px;
+    height: 17px;
+    background: #fff;
+    border-radius: 50%;
+    transition: all 300ms ease-in-out;
+}
+
+.toggle-btn.active{
+    background:#00acee;
+}
+
+.toggle-btn.active> .inner-circle{
+    margin-left: 14px;
+}
+
+.results> h1 >{
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 501px) {
+  
+    #HomeTitle{
+        display: block;
+        font-size: 1.5em !important;
+        min-height: 2.35rem; 
+        margin-top: 10px;
+        margin-left: 505px;
+    }
+    #mapid {
+        max-width: 100%;
+        height:800px;
+    }
+
+    /* .middle-section{
+        padding-top: 1rem;
+    } */
+
+        /* .navbar.container{
+            min-height: 2rem !important;
+        } */
+
+    .navbar-brand{
+        min-height: 2rem;
+    }  
+
+    .dropdown{
+        min-width: 4rem;
+    }
+
+    .right-column{
+        display:flex;
+        justify-content:space-between;
+    }
+
+    .columns{
+        display:flex;
+        justify-content:start;
+    }
+    .navbrand-container{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.navbar-menu {
+	background-color: #48c78e;
+    
+}
+.navbar-item{
+    color: white;
+}
+
+@media (max-width:600px) {
+    /* #HomeTitle>h2{ */
+        /* display: block; */
+            
+        /* margin-top: 7px; */
+        /* font-size: 1.2em !important; */
+        /* min-height: 2rem !important; */
+    /* } */
+    #HomeTitle{
+        min-height: 2rem !important;
+        max-width: 200px;
+    }
+
+    #mapid {
+        max-width: 100%;
+        height:500px;
+    }
+
+    .navbar-brand{
+        max-width: 80px;
+    }
+    .navbrand-container{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* .navbar-brand{
+        max-width: 80px;
+    } */
+    
+}
