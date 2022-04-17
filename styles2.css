@@ -22,25 +22,28 @@ h2 {
 .bg{
     background-image: url(images/forest.jpg);
 }
+
 .sectionBg {
     background: rgba(46,139,87, .95);
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 6px;
     max-width: 2200px;
     /*min-width: 2200px;*/
 }
-.center{
-    
-}
+
 .middle-section{
 
     padding-top: 2vh;
 }
 @media screen and (min-width: 769px){
 
+}}
+
+.top-section{
 
 }
-}
+@media screen and (min-width: 769px)
+
 .tablink{
     padding: 1rem;
 }
@@ -118,9 +121,10 @@ div#HomeTitle {
 }
 
 .navbar-menu {
-	background-color: #48c78e;
-    margin: 30px;
+	background-color:#48c78e
 }
 .navbar-item{
     color: white;
+    font-size: larger;
 }
+
