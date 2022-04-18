@@ -452,7 +452,10 @@ async function mainThread() {
           // Display all the markers.
           markersLayer.addTo(mymap);
         });
+        let featureGroup = L.featureGroup(markerGroup).addTo(mymap);
+        mymap.fitBounds(featureGroup.getBounds());
       }
+
       filteredData.forEach((school) => {
         const latitude = school.latitude;
         const longitude = school.longitude;
@@ -480,6 +483,8 @@ async function mainThread() {
         // Display all the markers.
         markersLayer.addTo(mymap);
       });
+      let featureGroup = L.featureGroup(markerGroup).addTo(mymap);
+      mymap.fitBounds(featureGroup.getBounds());
     });
   });
 
