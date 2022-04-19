@@ -31,5 +31,12 @@
   "bugs": {
     "url": "https://github.com/asandin218/pgcps_enviro_literacy490/issues"
   },
-  "homepage": "https://github.com/asandin218/pgcps_enviro_literacy490#readme"
+  "homepage": "https://github.com/asandin218/pgcps_enviro_literacy490#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "babel-loader": "^8.2.4",
+    "dotenv": "^16.0.0",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2"
+  }
 }

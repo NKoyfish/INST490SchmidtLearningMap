@@ -6,7 +6,11 @@ import {
   dropDown_query,
   JSON_KEY_TO_OPTION_NAMES,
 } from "../apiRoutes/api_endpoint.js";
-
+let lastSectionFilter = {};
+let currMatches = [];
+function displayCurrMatches() {
+  console.log(currMatches);
+}
 /**
  * This function loads the leaflet map
  * @returns Returns the mymap object
@@ -62,6 +66,49 @@ function populateEnvFeaturesDropDown(JSON_KEY_TO_OPTION_NAMES, myselect) {
 }
 
 /**
+ * This function populates the dropdown for advanced filtering (checkbox) menu in index.html by related section
+ * @param  {object} JSON_KEY_TO_OPTION_NAMES : an object of the select element ,with a class name of feature_filters_drop_down, in the index.html file
+ * @param  {object} myselect : selector for the tab we are inserting checkboxes into
+ * @param {object} section: string of section we want to populate options
+ */
+
+function populateEnvFeaturesCheckbox(
+  JSON_KEY_TO_OPTION_NAMES,
+  myselect,
+  section
+) {
+  console.log("Populating Environmental Features drop-down list.");
+  let inject = "";
+  // Add the options to the drop-down and build the documentation page
+
+  for (let feature of JSON_KEY_TO_OPTION_NAMES) {
+    let key = feature[0];
+    let text = feature[1][0];
+    if (
+      !key.endsWith("_comments") &&
+      !key.startsWith("section1_time_stamp") &&
+      !key.startsWith("section1_school_name") &&
+      !key.startsWith("section1_email") &&
+      !key.startsWith("section6_enviro_awards") &&
+      !key.startsWith("section6_actions_not_mentioned") &&
+      !key.startsWith("latitude") &&
+      !key.startsWith("longitude") &&
+      key.startsWith(section)
+    ) {
+      //console.log("match", feature[0], section);
+      let string = `<div id=labelCheck><label for="${feature[0]}">${text}<input title="checkboxClick"type="checkbox" id ="${key}" value="${text}"></label></div>`;
+      let opt = document.createElement("label");
+      opt.appendChild(document.createTextNode(text));
+      // set value property of opt
+      opt.value = key;
+      // add option to the end of select box
+      inject += string;
+    }
+  }
+  myselect.innerHTML = inject;
+}
+
+/**
  * This function populates the dropdown menu in index.html by related section
  * @param  {object} JSON_KEY_TO_OPTION_NAMES : an object of the select element ,with a class name of feature_filters_drop_down, in the index.html file
  * @param  {object} myselect : a Map object created in the mainThread function
@@ -91,6 +138,7 @@ function populateEnvFeaturesDropDownSection(
       !key.startsWith("longitude") &&
       key.startsWith(section)
     ) {
+      //console.log("match", feature[0], section);
       let opt = document.createElement("option");
       opt.appendChild(document.createTextNode(text));
       // set value property of opt
@@ -106,23 +154,35 @@ function populateEnvFeaturesDropDownSection(
  * @param  {object} myselect : an object of the select element ,with a class name of feature_filters_drop_down, in the index.html file
  * @param  {object} mymap : The map object from the loadMap function
  * @param  {object} markersLayer : A layer object related to the map. The markers are added to this layer, then the layer is added to the map for the markers to be visible
+ * @param {object} filterVal: string of last used filter
  * @async
  */
-
-async function displayMarkersByFeature(myselect, mymap, markersLayer) {
+async function updateLast(key, filterVal) {
+  lastSectionFilter[key] = filterVal;
+}
+async function displayMarkersByFeature(
+  myselect,
+  mymap,
+  markersLayer,
+  filterVal
+) {
+  //await updateLast(myselect.className, filterVal);
+  //await updateLast("2", "hello");
   let feature = myselect.options[myselect.selectedIndex].value;
   // const dropDown_query = 'https://voyn795bv9.execute-api.us-east-1.amazonaws.com/Dev/getDataByColumnName?columnName='
-  console.log("Displaying markers for: " + feature);
+  //console.log("Displaying markers for: " + feature);
 
   // NOTE: The first thing we do here is clear the markers from the layer.
   markersLayer.clearLayers();
 
   const request = await fetch(dropDown_query + feature + "&value=Yes");
   let response = await request.json();
+  let markerGroup = [];
   console.log(response);
   response.forEach((item) => {
     const latitude = item.latitude;
     const longitude = item.longitude;
+    currMatches.push(item);
 
     if (feature.toLowerCase().length > 0) {
       if (item[feature].toLowerCase() == "yes") {
@@ -146,11 +206,15 @@ async function displayMarkersByFeature(myselect, mymap, markersLayer) {
           .openPopup();
         // Add marker to the layer. Not displayed yet.
         markersLayer.addLayer(marker);
+        markerGroup.push(marker);
       }
     }
     // Display all the markers.
     markersLayer.addTo(mymap);
   });
+  //pan and set zoom to fit everything
+  let featureGroup = L.featureGroup(markerGroup).addTo(mymap);
+  mymap.fitBounds(featureGroup.getBounds());
 }
 
 /**
@@ -289,23 +353,248 @@ function countYesForSection(schoolData, section) {
 /**
  * The main function that runs first when the index.html page is loaded.
  */
-function mainThread() {
+async function mainThread() {
   const mymap = loadMap();
   let markersLayer = new L.LayerGroup();
   let perimLayer = new L.LayerGroup();
   const myselect = document.querySelector(".feature_filters_drop_down");
   const sectionDropdown1 = document.querySelector(".section1");
+  const sectionDropdown2 = document.querySelector(".section2");
+  const sectionDropdown3 = document.querySelector(".section3");
+  const sectionDropdown4 = document.querySelector(".section4");
+  const sectionDropdown5 = document.querySelector(".section5");
+  const advSec1 = document.querySelector(".content-inner");
+  populateEnvFeaturesCheckbox(JSON_KEY_TO_OPTION_NAMES, advSec1, "section1");
+  const advSec2 = document.querySelector(".content-inner2");
+  populateEnvFeaturesCheckbox(JSON_KEY_TO_OPTION_NAMES, advSec2, "section2");
+  const advSec3 = document.querySelector(".content-inner3");
+  populateEnvFeaturesCheckbox(JSON_KEY_TO_OPTION_NAMES, advSec3, "section3");
+  const advSec4 = document.querySelector(".content-inner4");
+  populateEnvFeaturesCheckbox(JSON_KEY_TO_OPTION_NAMES, advSec4, "section4");
+  const advSec5 = document.querySelector(".content-inner5");
+  populateEnvFeaturesCheckbox(JSON_KEY_TO_OPTION_NAMES, advSec5, "section5");
+  //grab all advanced filter checkboxes so we can add an eventlistener on click
+  const allCheckboxes = document.querySelectorAll('[title*="checkboxClick"]');
+  let filterList = [];
+  let filterData = [];
+  let data = await fetch(
+    "https://voyn795bv9.execute-api.us-east-1.amazonaws.com/Dev/read_all_dynamodb"
+  );
+  data = await data.json();
+  allCheckboxes.forEach((item) => {
+    item.addEventListener("click", () => {
+      //initialize the filter
+      if (filterList.length < 1) {
+        if (item.checked) {
+          filterList.push(item.id);
+          //console.log("adding " + `${item.id} to filter`);
+        }
+      } else {
+        //filter already established
+        if (item.checked) {
+          filterList.push(item.id);
+          //console.log("adding " + `${item.id} to filter`);
+          //console.log(filterList.length);
+        } else {
+          let filterout = filterList.filter((elm) => elm != item.id);
+          //console.log("removing " + `${item.id} from filter`);
+          filterList = filterout;
+          //console.log(filterList);
+        }
+      }
+      let filteredData = [];
+      filterList.forEach((filter, index) => {
+        if (index === 0) {
+          data.forEach((school) => {
+            if (school[filter].toLowerCase() === "yes") {
+              filteredData.push(school);
+            }
+          });
+          //console.log("starting filter", filteredData, `filter`);
+        } else {
+          //console.log("now filtering", filter);
+
+          let newfiltered = filteredData.filter(
+            (elm) => elm[filter].toLowerCase() === "yes"
+          );
+          filteredData = newfiltered;
+          //console.log(filteredData);
+          filterData = filteredData;
+        }
+      });
+      markersLayer.clearLayers();
+      let markerGroup = [];
+      if (filterList.length < 1) {
+        data.forEach((school) => {
+          const latitude = school.latitude;
+          const longitude = school.longitude;
+          const marker = L.marker([latitude, longitude]);
+          // Add a popup to the marker
+          marker
+            .bindPopup(
+              "<b>" +
+                school["schoolName"] +
+                "</b><br>" +
+                "Website: <a target='_blank' href='" +
+                school.website +
+                "'>" +
+                school.website +
+                "</a><br>" +
+                "<img src='" +
+                school.picture +
+                "' style='width: 200px; height: 150px' /><br>"
+            )
+            .openPopup();
+          // Add marker to the layer. Not displayed yet.
+          markersLayer.addLayer(marker);
+          markerGroup.push(marker);
+
+          // Display all the markers.
+          markersLayer.addTo(mymap);
+        });
+        let featureGroup = L.featureGroup(markerGroup).addTo(mymap);
+        mymap.fitBounds(featureGroup.getBounds());
+      }
+
+      filteredData.forEach((school) => {
+        const latitude = school.latitude;
+        const longitude = school.longitude;
+        const marker = L.marker([latitude, longitude]);
+        // Add a popup to the marker
+        marker
+          .bindPopup(
+            "<b>" +
+              school["schoolName"] +
+              "</b><br>" +
+              "Website: <a target='_blank' href='" +
+              school.website +
+              "'>" +
+              school.website +
+              "</a><br>" +
+              "<img src='" +
+              school.picture +
+              "' style='width: 200px; height: 150px' /><br>"
+          )
+          .openPopup();
+        // Add marker to the layer. Not displayed yet.
+        markersLayer.addLayer(marker);
+        markerGroup.push(marker);
+
+        // Display all the markers.
+        markersLayer.addTo(mymap);
+      });
+      let featureGroup = L.featureGroup(markerGroup).addTo(mymap);
+      mymap.fitBounds(featureGroup.getBounds());
+    });
+  });
+
+  let lastSectionFilter = {};
+
   populateEnvFeaturesDropDownSection(
     JSON_KEY_TO_OPTION_NAMES,
     sectionDropdown1,
     "section1"
   );
+  populateEnvFeaturesDropDownSection(
+    JSON_KEY_TO_OPTION_NAMES,
+    sectionDropdown2,
+    "section2"
+  );
+  populateEnvFeaturesDropDownSection(
+    JSON_KEY_TO_OPTION_NAMES,
+    sectionDropdown3,
+    "section3"
+  );
+  populateEnvFeaturesDropDownSection(
+    JSON_KEY_TO_OPTION_NAMES,
+    sectionDropdown4,
+    "section4"
+  );
+  populateEnvFeaturesDropDownSection(
+    JSON_KEY_TO_OPTION_NAMES,
+    sectionDropdown5,
+    "section5"
+  );
+
+  sectionDropdown1.addEventListener("change", (event) => {
+    sectionDropdown2.value = "None";
+    sectionDropdown3.value = "None";
+    sectionDropdown4.value = "None";
+    sectionDropdown5.value = "None";
+
+    displayMarkersByFeature(
+      sectionDropdown1,
+      mymap,
+      markersLayer,
+      event.target.value
+    );
+
+    console.log(event.target.value, lastSectionFilter);
+  });
+  sectionDropdown2.addEventListener("change", (event) => {
+    sectionDropdown1.value = "None";
+    sectionDropdown3.value = "None";
+    sectionDropdown4.value = "None";
+    sectionDropdown5.value = "None";
+    displayMarkersByFeature(
+      sectionDropdown2,
+      mymap,
+      markersLayer,
+      event.target.value
+    );
+  });
+  sectionDropdown3.addEventListener("change", (event) => {
+    sectionDropdown1.value = "None";
+    sectionDropdown2.value = "None";
+    sectionDropdown4.value = "None";
+    sectionDropdown5.value = "None";
+    displayMarkersByFeature(
+      sectionDropdown3,
+      mymap,
+      markersLayer,
+      event.target.value
+    );
+  });
+  sectionDropdown4.addEventListener("change", (event) => {
+    sectionDropdown1.value = "None";
+    sectionDropdown2.value = "None";
+    sectionDropdown3.value = "None";
+    sectionDropdown5.value = "None";
+    displayMarkersByFeature(
+      sectionDropdown4,
+      mymap,
+      markersLayer,
+      event.target.value
+    );
+  });
+  sectionDropdown5.addEventListener("change", (event) => {
+    sectionDropdown1.value = "None";
+    sectionDropdown2.value = "None";
+    sectionDropdown3.value = "None";
+    sectionDropdown4.value = "None";
+    displayMarkersByFeature(
+      sectionDropdown5,
+      mymap,
+      markersLayer,
+      event.target.value
+    );
+  });
+  let advancedtabFilter = document.querySelector(".advancedfiltertab");
+  let simpleFilter = document.querySelector(".toggleShow");
+  const multiFilter = document.querySelector("#multfilter");
+  multiFilter.addEventListener("click", (evt) => {
+    multiFilter.classList.toggle("active");
+    if (advancedtabFilter.style.display === "none") {
+      advancedtabFilter.style.display = "block";
+      simpleFilter.style.display = "none";
+    } else {
+      advancedtabFilter.style.display = "none";
+      simpleFilter.style.display = "block";
+    }
+  });
   const countyPerimeter = document.querySelector(".toggle-btn");
   const sectionSelect = document.querySelector(".section_filters_drop_down");
-  populateEnvFeaturesDropDown(JSON_KEY_TO_OPTION_NAMES, myselect);
-  myselect.addEventListener("change", (event) => {
-    displayMarkersByFeature(myselect, mymap, markersLayer);
-  });
+  //populateEnvFeaturesDropDown(JSON_KEY_TO_OPTION_NAMES, myselect);
 
   countyPerimeter.addEventListener("click", (event) => {
     displayAreaCovered(mymap, perimLayer, countyPerimeter);
@@ -313,6 +602,8 @@ function mainThread() {
 
   sectionSelect.addEventListener("change", (event) => {
     displayMarkersBySectionRating(sectionSelect, markersLayer, mymap);
+    displayCurrMatches();
+    console.log(lastSectionFilter);
   });
 }
 
