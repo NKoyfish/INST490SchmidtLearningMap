@@ -36,6 +36,7 @@ function populateEnvFeaturesDocumentation(JSON_KEY_TO_OPTION_NAMES) {
 
 // InDev
 //Get button:
+/*
 topButton = document.getElementById("topBtn");
 
 // at 50px of scroll display button
@@ -55,7 +56,8 @@ consolelog("testing")
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+}*/
+
 
 /**
  * The main function that is called when the documentation.html page is loaded
