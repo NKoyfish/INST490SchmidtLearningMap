@@ -36,6 +36,7 @@ function populateEnvFeaturesDocumentation(JSON_KEY_TO_OPTION_NAMES) {
 
 // InDev
 //Get button:
+/*
 topButton = document.getElementById("topBtn");
 
 // at 50px of scroll display button

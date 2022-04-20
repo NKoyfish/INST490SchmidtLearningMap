@@ -287,12 +287,13 @@ async function populateSurvey(event, section1_results,section2_results,section3_
 
 //const results = [html1, html2, html3, html4, html5];
 
-document.getElementById("survey-dropDown").addEventListener("click", displayDate);
+//document.getElementById("survey-dropDown").addEventListener("click", displayDate);
 
 
 /**
  * The main function that is called when the survey.html page is loaded
  */
+
 async function mainThread(){
     
     let schoolNames = await schoolNamesDropDown(readAPI)
