@@ -598,8 +598,10 @@ div#HomeTitle {
 }
 
 /* InDev */
+
+/*
 #topBtn {
-    /* display: none; */
+    // display: none;
     position: fixed;
     bottom: 20px;
     right: 30px;
@@ -608,8 +610,8 @@ div#HomeTitle {
     outline: none;
     background-color: #48c78e;
     color: white;
-    cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 15px;
+    cursor: pointer; /* Add a mouse pointer on hover 
+    padding: 15px; /*fix commenting when reimplementing
     border-radius: 10px;
     font-size: 18px;
   }
@@ -617,3 +619,4 @@ div#HomeTitle {
   #topBtn:hover {
     background-color: #a1e6b896; /* Adds a dark-gray background when hover */
   }
+*/
