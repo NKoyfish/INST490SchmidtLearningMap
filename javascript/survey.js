@@ -289,7 +289,6 @@ async function populateSurvey(event, section1_results,section2_results,section3_
 
 //document.getElementById("survey-dropDown").addEventListener("click", displayDate);
 
-
 /**
  * The main function that is called when the survey.html page is loaded
  */
