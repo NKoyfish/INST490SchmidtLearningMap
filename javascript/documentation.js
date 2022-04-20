@@ -43,23 +43,18 @@ let topButton = document.getElementById("topBtn");
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-console.log("testing")
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
     topButton.style.display = "block";
   } else {
     topButton.style.display = "none";
   }
-  console.log("testing1")
 }
 
 // Scroll to the top when clicked
- function topFunction() {
-	console.log('hello')
+function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
-
-topButton.addEventListener('click', topFunction)
 
 /**
  * The main function that is called when the documentation.html page is loaded
