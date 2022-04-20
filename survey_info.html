@@ -1,63 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PGCPS Environmental Literacy Tracker - Survey Data</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-    />
-<!-- <link type="text/css" rel="stylesheet" href="styles.css"> -->
-    <link type="text/css" rel="stylesheet" href="styles.css">
-    
-    <!-- <script src="pgcps_functions.js"></script> -->
-    </head>
-
-    <body>
-        <div class="section top-section">
-            <div class="container">
-               <nav class="navbar has-shadow is-success is-fixed-top">
-                  <div class="navbrand-container">
-                     <div class="navbar-brand">
-                        <span class="navbar-item">
-                           <img src="/images/WS_logo.png" alt="" style="max-height: 40px;" class='px-2'>
-                        </span>
-                     </div>  
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>PGCPS Environmental Literacy Tracker</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+         crossorigin="" />
+      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+         crossorigin=""></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+      <link type="text/css" rel="stylesheet" href="styles.css" />
+   </head>
    
-                     <div class="container has-text-centered has-text-primary-light" id="HomeTitle">
+      <div class="section top-section">
+         <div class="container">
+            <nav class="navbar has-shadow is-success is-fixed-top">
+               <div class="container has-text-centered has-text-primary-light" id="HomeTitle">
+                  <div class="logo"><img
+                        src="https://www.pinclipart.com/picdir/big/63-636147_prince-georges-county-public-schools-logo-clipart.png"
+                        alt=""></div>
+                  <h2>PGCPS Green Literacy Tracker</h2>
    
-                        <h2>PGCPS Green Literacy Tracker</h2>
-   
-                     
-                     </div>
-                     <div class="navbar-brand">
-                        <a role="button" class="navbar-burger"  id="burger" aria-label="menu" aria-expanded="false" data-target="navLinks">
-                           <span aria-hidden="true"></span>
-                           <span aria-hidden="true"></span>
-                           <span aria-hidden="true"></span> 
-                        </a>
-                     </div>  
+                  <div class="navbar-brand">
+                     <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false"
+                        data-target="navLinks">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                     </a>
                   </div>
-                  
-                     
-                  
-                  
-                  <div class="navbar-menu" id="navLinks">
-                     <!-- <div class="navbar-start"> -->
-                        
-                        
-                     <!-- </div> -->
-                     <div class="navbar-end mr-6 pr-6">
-                        <a href="./index.html" class="navbar-item">Home</a>
-                        <a href="./survey_info.html" class="navbar-item">Survey Info</a>
-                        <a href="./documentation.html" class="navbar-item">Documentation</a>
-                     </div>
+   
+               </div>
+               <div class="navbar-menu" id="navLinks">
+                  <!-- <div class="navbar-start"> -->
+   
+   
+                  <!-- </div> -->
+                  <div class="navbar-end mr-6 pr-9">
+                     <a href="./index.html" class="navbar-item">Home</a>
+                     <a href="./survey_info.html" class="navbar-item">Survey Info</a>
+                     <a href="./documentation.html" class="navbar-item">Documentation</a>
                   </div>
-               </nav>
-            </div>
-        </div>
-
+               </div>
+            </nav>
+         </div>
+      </div>
         <div class="section middle-section">
            <div class="columns is-centered">
                <div class="column is-half">

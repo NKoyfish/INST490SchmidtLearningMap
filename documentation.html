@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>PGCPS Environmental Literacy Tracker - Documentation</title>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
-      />
-      <!-- <link type="text/css" rel="stylesheet" href="styles.css"> -->
-      <link type="text/css" rel="stylesheet" href="styles.css">
-      <!-- <script src="pgcps_functions.js"></script> -->
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>PGCPS Environmental Literacy Tracker</title>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+         crossorigin="" />
+      <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+         crossorigin=""></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
+      <link type="text/css" rel="stylesheet" href="styles.css" />
    </head>
-
-   <body"
-      style="overflow-y: auto; overflow-x: auto; width: 100%">
-
-      <!--Copying navbar from index-->
+   
       <div class="section top-section">
          <div class="container">
             <nav class="navbar has-shadow is-success is-fixed-top">
-               
-                  <div class="container has-text-centered has-text-primary-light" id="HomeTitle">
-                     <h1>PGCPS Green Literacy Tracker</h1>
-                  </div>
-                  
-                     <a role="button" class="navbar-burger"  id="burger" aria-label="menu" aria-expanded="false" data-target="navLinks">
+               <div class="container has-text-centered has-text-primary-light" id="HomeTitle">
+                  <div class="logo"><img
+                        src="https://www.pinclipart.com/picdir/big/63-636147_prince-georges-county-public-schools-logo-clipart.png"
+                        alt=""></div>
+                  <h2>PGCPS Green Literacy Tracker</h2>
+   
+                  <div class="navbar-brand">
+                     <a role="button" class="navbar-burger" id="burger" aria-label="menu" aria-expanded="false"
+                        data-target="navLinks">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span> 
+                        <span aria-hidden="true"></span>
                      </a>
-                  
-               
-               
-                  
-               
-               
+                  </div>
+   
+               </div>
                <div class="navbar-menu" id="navLinks">
                   <!-- <div class="navbar-start"> -->
-                     
-                     
+   
+   
                   <!-- </div> -->
-                  <div class="navbar-end mr-6 pr-6">
+                  <div class="navbar-end mr-6 pr-9">
                      <a href="./index.html" class="navbar-item">Home</a>
                      <a href="./survey_info.html" class="navbar-item">Survey Info</a>
                      <a href="./documentation.html" class="navbar-item">Documentation</a>
@@ -50,7 +48,6 @@
             </nav>
          </div>
       </div>
-
       <div class="section tabs-section">
          <div class="columns has-text-centered is-centered">
             <div class="column is-one-quarter tablink dark-grey">
@@ -63,38 +60,39 @@
             </div>
          </div>
       </div>
-      
+
       <div class = "section doc-section">
          <div id="EnvFeatures" class="container menu padding-48 card">
             <!-- This section will be populated by one of the javascript functions -->
          </div>   
 
          <div id="SectionRatings" class="container menu padding-48 card">
-            <h5>All</h5>
+            <strong>All</strong>
             <p class="text-grey">Displays the number of "YES" answers throughout the survey. The larger the circle the more "YES" the school received.</p>
             <br>
 
-            <h5>Section 1: General, Garden, Recycling, Composting</h5>
+            <strong>Section 1: General, Garden, Recycling, Composting</strong>
             <p class="text-grey">Displays the number of "YES" answers in Section 1 only. The larger the circle the more "YES" the school received in Section 1.</p>
             <br>
 
-            <h5>Section 2: Water Conservation and Pollution Prevention</h5>
+            <strong>Section 2: Water Conservation and Pollution Prevention</strong>
             <p class="text-grey">Displays the number of "YES" answers in Section 2 only. The larger the circle the more "YES" the school received in Section 2.</p>
             <br>
             
-            <h5>Section 3: Energy Conservation</h5>
+            <strong>Section 3: Energy Conservation</strong>
             <p class="text-grey">Displays the number of "YES" answers in Section 3 only. The larger the circle the more "YES" the school received in Section 3.</p>
             <br>
             
-            <h5>Section 4: Habitat Restoration and Structures for Environmental Learning</h5>
+            <strong>Section 4: Habitat Restoration and Structures for Environmental Learning</strong>
             <p class="text-grey">Displays the number of "YES" answers in Section 4 only. The larger the circle the more "YES" the school received in Section 4.</p>
             <br>
 
-            <h5>Section 5: Responsible Transportation and Healthy School Environment</h5>
+            <strong>Section 5: Responsible Transportation and Healthy School Environment</strong>
             <p class="text-grey">Displays the number of "YES" answers in Section 5 only. The larger the circle the more "YES" the school received in Section 5.</p>
             <br>
          </div>
       </div>
+
       
       <script>
                //Tabbed Menu
