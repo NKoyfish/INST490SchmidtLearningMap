@@ -21,6 +21,8 @@ async function schoolNamesDropDown(readAPI){
  * @param  {string} schoolNames: A string of every school name in the database
  * @param  {object} dropDown: The object for the dropdown element in the survey.html file
  */
+
+
 function populateDropDown(schoolNames, dropDown){
     
     schoolNames.forEach((item)=>{
@@ -37,6 +39,7 @@ function populateDropDown(schoolNames, dropDown){
 /**
  * The function that populates the survey.html page
  * @param  {object} event: The event triggered when a school is selected in the survey.html page
+ * @param  {object} event_section: The event is triggered when a section of a school's information is selected in the survey.html page.
  * @param  {object} section1_results: The object for the div html element with class name of section1_results
  * @param  {object} section2_results: The object for the div html element with class name of section2_results
  * @param  {object} section3_results: The object for the div html element with class name of section3_results
@@ -281,6 +284,11 @@ async function populateSurvey(event, section1_results,section2_results,section3_
 
 
 }
+
+//const results = [html1, html2, html3, html4, html5];
+
+document.getElementById("survey-dropDown").addEventListener("click", displayDate);
+
 
 /**
  * The main function that is called when the survey.html page is loaded
