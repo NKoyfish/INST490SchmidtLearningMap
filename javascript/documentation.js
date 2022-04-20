@@ -58,6 +58,7 @@ function topFunction() {
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }*/
 
+
 /**
  * The main function that is called when the documentation.html page is loaded
  */

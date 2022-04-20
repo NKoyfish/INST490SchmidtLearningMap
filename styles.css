@@ -610,7 +610,7 @@ div#HomeTitle {
     background-color: #48c78e;
     color: white;
     cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 15px; /*fix commenting when reimplementing */
+    padding: 15px; 
     border-radius: 10px;
     font-size: 18px;
   }
