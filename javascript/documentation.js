@@ -17,7 +17,7 @@ function populateEnvFeaturesDocumentation(JSON_KEY_TO_OPTION_NAMES) {
 		   !key.startsWith("latitude") && !key.startsWith("longitude")) {
 			let columnName = feature[1][0];
 			let description = feature[1][1]
-			let heading = document.createElement("h5");
+			let heading = document.createElement("strong");
 			let text = document.createTextNode(columnName);
 			heading.appendChild(text);
 			mydocumentation.appendChild(heading);

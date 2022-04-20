@@ -503,6 +503,7 @@ h2 {
 
 .tablink{
     padding: 1rem;
+    background-color: rgba(161, 230, 184, 0.59);
 }
 
 .tab-link:hover{
@@ -515,7 +516,7 @@ h2 {
 }
 
 .tabs-section{
-    padding-top: 0px;
+    padding-top: 100px;
 }
 
 .dark-grey,.dark-grey:hover{
@@ -584,8 +585,18 @@ div#HomeTitle {
 }
 .navbar-item{
     color: white;
+    font-size: 130%
 }
 .has-background-success {
     background-color: #c3e8d7;
 
+}
+
+#EnvFeatures, #SectionRatings{
+    max-width:  800px;
+    text-align: left;
+}
+
+h2{
+    font-size: 50px;;
 }
