@@ -297,6 +297,7 @@ async function mainThread(){
     
     let schoolNames = await schoolNamesDropDown(readAPI)
     let dropDown = document.querySelector('.survey-dropDown')
+    let sectionDropDown = document.querySelector('.section-dropDown')
     let section1_results = document.querySelector('.section1_results')
     let section2_results = document.querySelector('.section2_results')
     let section3_results = document.querySelector('.section3_results')
