@@ -465,6 +465,11 @@ h2 {
     font-size: 3.2vw;
     font-weight: 400;
 }
+@media screen and (min-width:1080px){
+    h2{
+        font-size: 40px;
+    }
+}
 #mapid {
     z-index: 3;
 }
@@ -577,10 +582,11 @@ div#HomeTitle {
     font-size: 3.5em;  
     justify-content: space-around;
     display: flex;
+    background-color: #13b16a;
 }
 
 .navbar-menu {
-	background-color: #48c78e;
+	background-color: #13b16a;
     
 }
 .navbar-item{
