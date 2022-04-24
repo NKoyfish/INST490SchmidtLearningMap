@@ -36,28 +36,28 @@ function populateEnvFeaturesDocumentation(JSON_KEY_TO_OPTION_NAMES) {
 
 // InDev
 //Get button:
-/*
-topButton = document.getElementById("topBtn");
+
+let topButton = document.getElementById("topBtn");
 
 // at 50px of scroll display button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-consolelog("testing")
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     topButton.style.display = "block";
   } else {
     topButton.style.display = "none";
   }
-  consolelog("testing1")
 }
 
 // Scroll to the top when clicked
-function topFunction() {
+ function topFunction() {
+	console.log('hello')
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}*/
+}
 
+topButton.addEventListener('click', topFunction)
 
 /**
  * The main function that is called when the documentation.html page is loaded
