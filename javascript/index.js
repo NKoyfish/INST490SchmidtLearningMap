@@ -96,7 +96,9 @@ function populateEnvFeaturesCheckbox(
       key.startsWith(section)
     ) {
       //console.log("match", feature[0], section);
-      let string = `<div id=labelCheck><label for="${feature[0]}">${text}<input title="checkboxClick"type="checkbox" id ="${key}" value="${text}"></label></div>`;
+      let string = `<div id=labelCheck><label for="${feature[0]}">${text.slice(
+        11
+      )}<input title="checkboxClick"type="checkbox" id ="${key}" value="${text}"></label></div>`;
       let opt = document.createElement("label");
       opt.appendChild(document.createTextNode(text));
       // set value property of opt
@@ -282,11 +284,25 @@ async function displayMarkersBySectionRating(
     let numberYes = countYesForSection(item, section);
     let latitude = item.latitude;
     let longitude = item.longitude;
-    let gradient = ["#BD0000", "#BD0000", "#BD0000", "#E24F00", "#E24F00", "#E24F00","#E4BE00","#E4BE00", "#7BC700", "#7BC700","#57E400","#57E400","#57E400 "];
+    let gradient = [
+      "#BD0000",
+      "#BD0000",
+      "#BD0000",
+      "#E24F00",
+      "#E24F00",
+      "#E24F00",
+      "#E4BE00",
+      "#E4BE00",
+      "#7BC700",
+      "#7BC700",
+      "#57E400",
+      "#57E400",
+      "#57E400 ",
+    ];
 
     let circle = L.circle([latitude, longitude], {
-      color: gradient[numberYes-1],
-      fillColor: gradient[numberYes-1],
+      color: gradient[numberYes - 1],
+      fillColor: gradient[numberYes - 1],
       fillOpacity: 0.85,
       radius: numberYes * (section === "srf_all" ? 40 : 80),
     });
@@ -382,28 +398,37 @@ async function mainThread() {
     "https://voyn795bv9.execute-api.us-east-1.amazonaws.com/Dev/read_all_dynamodb"
   );
   data = await data.json();
+  let filterListText = [];
   allCheckboxes.forEach((item) => {
     item.addEventListener("click", () => {
       //initialize the filter
       if (filterList.length < 1) {
         if (item.checked) {
           filterList.push(item.id);
+          filterListText.push(item.value);
           //console.log("adding " + `${item.id} to filter`);
         }
       } else {
         //filter already established
         if (item.checked) {
           filterList.push(item.id);
+          filterListText.push(item.value);
           //console.log("adding " + `${item.id} to filter`);
           //console.log(filterList.length);
         } else {
           let filterout = filterList.filter((elm) => elm != item.id);
-          //console.log("removing " + `${item.id} from filter`);
+          let filterouttext = filterListText.filter((elm) => elm != item.value);
+          console.log("test", filterouttext);
+          console.log("removing " + `${item.id} from filter`);
+
           filterList = filterout;
+          filterListText = filterouttext;
+          console.log(filterListText);
           //console.log(filterList);
         }
       }
       let filteredData = [];
+      document.querySelector(".overview").innerHTML = "Filtering for: <br/>";
       filterList.forEach((filter, index) => {
         if (index === 0) {
           data.forEach((school) => {
@@ -423,8 +448,28 @@ async function mainThread() {
           filterData = filteredData;
         }
       });
+      console.log(filterListText);
+      if (filterListText.length > 0) {
+        filterListText.forEach((elm) => {
+          console.log(elm);
+          const node2 = document.createElement("li");
+          const textNode = document.createTextNode(`${elm.slice(11)}`);
+          node2.appendChild(textNode);
+          document.querySelector(".overview").appendChild(node2);
+        });
+        const node2 = document.createElement("p");
+        const textNode = document.createTextNode(
+          'with responses "Yes" or "I don\'t know"'
+        );
+        node2.appendChild(textNode);
+        document.querySelector(".overview").appendChild(node2);
+      } else {
+      }
+
       markersLayer.clearLayers();
       let markerGroup = [];
+      const schoolList = document.querySelector(".school");
+      schoolList.innerHTML = "";
       if (filterList.length < 1) {
         data.forEach((school) => {
           const latitude = school.latitude;
@@ -458,6 +503,10 @@ async function mainThread() {
       }
 
       filteredData.forEach((school) => {
+        const schoolNode = document.createElement("li");
+        const textnode = document.createTextNode(`${school.schoolName}`);
+        schoolNode.appendChild(textnode);
+        schoolList.appendChild(schoolNode);
         const latitude = school.latitude;
         const longitude = school.longitude;
         const marker = L.marker([latitude, longitude]);
