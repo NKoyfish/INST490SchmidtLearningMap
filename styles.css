@@ -508,7 +508,9 @@ h2 {
 
 .tablink{
     padding: 1rem;
+
     background-color: #a1e6b896;
+
 }
 
 .tab-link:hover{
@@ -603,10 +605,11 @@ div#HomeTitle {
     text-align: left;
 }
 
+
 /* InDev */
 
 #topBtn {
-    /*display: none;*/
+    display: none;
     position: fixed;
     bottom: 20px;
     right: 30px;
@@ -624,3 +627,7 @@ div#HomeTitle {
   #topBtn:hover {
     background-color: #a1e6b896; /* Adds a dark-gray background when hover */
   }
+
+h2{
+    font-size: 50px;;
+}

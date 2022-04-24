@@ -282,12 +282,13 @@ async function displayMarkersBySectionRating(
     let numberYes = countYesForSection(item, section);
     let latitude = item.latitude;
     let longitude = item.longitude;
+    let gradient = ["#BD0000", "#BD0000", "#BD0000", "#E24F00", "#E24F00", "#E24F00","#E4BE00","#E4BE00", "#7BC700", "#7BC700","#57E400","#57E400","#57E400 "];
 
     let circle = L.circle([latitude, longitude], {
-      color: "red",
-      fillColor: "#f03",
-      fillOpacity: 0.5,
-      radius: numberYes * (section === "srf_all" ? 50 : 100),
+      color: gradient[numberYes-1],
+      fillColor: gradient[numberYes-1],
+      fillOpacity: 0.85,
+      radius: numberYes * (section === "srf_all" ? 40 : 80),
     });
 
     // Add a popup to the circle
