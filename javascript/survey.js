@@ -285,6 +285,29 @@ async function populateSurvey(event, section1_results,section2_results,section3_
 
 }
 
+//Get button:
+let topButton = document.getElementById("topBtn");
+
+// at 50px of scroll display button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    topButton.style.display = "block";
+  } else {
+    topButton.style.display = "none";
+  }
+}
+
+// Scroll to the top when clicked
+ function topFunction() {
+	console.log('hello')
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+topButton.addEventListener('click', topFunction)
+
 //const results = [html1, html2, html3, html4, html5];
 
 //document.getElementById("survey-dropDown").addEventListener("click", displayDate);
