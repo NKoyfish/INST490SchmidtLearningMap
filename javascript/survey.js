@@ -39,7 +39,6 @@ function populateDropDown(schoolNames, dropDown){
 /**
  * The function that populates the survey.html page
  * @param  {object} event: The event triggered when a school is selected in the survey.html page
- * @param  {object} event_section: The event is triggered when a section of a school's information is selected in the survey.html page.
  * @param  {object} section1_results: The object for the div html element with class name of section1_results
  * @param  {object} section2_results: The object for the div html element with class name of section2_results
  * @param  {object} section3_results: The object for the div html element with class name of section3_results
@@ -308,9 +307,57 @@ function scrollFunction() {
 
 topButton.addEventListener('click', topFunction)
 
-//const results = [html1, html2, html3, html4, html5];
+// INDEV
 
-//document.getElementById("survey-dropDown").addEventListener("click", displayDate);
+let secOne = document.getElementById("secOne");
+let secTwo = document.getElementById("secTwo");
+let secThree = document.getElementById("secThree");
+let secFour = document.getElementById("secFour");
+let secFive = document.getElementById("secFive");
+
+let secNum = 6;
+
+// let so = document.getElementById("one").addEventListener('click', sectionNumber("1"))
+// let st = document.getElementById("two").addEventListener('click', sectionVisibility("2"))
+// let sth = document.getElementById("three").addEventListener('click', sectionVisibility("3"))
+// let sf = document.getElementById("four").addEventListener('click', sectionVisibility("4"))
+// let sfi = document.getElementById("five").addEventListener('click', sectionVisibility("5"))
+// let sAll = document.getElementById("viewAll").addEventListener('click', sectionVisibility("6"))
+
+// so.addEventListener('click', secNum = 1)
+
+function sectionNumber(n){
+    secNum = n;
+}
+
+function sectionVisibility(sectionNumber) {
+    secOne.style.display = "none";
+    secTwo.style.display = "none";
+    secThree.style.display = "none";
+    secFour.style.display = "none";
+    secFive.style.display = "none";
+    if (sectionNumber == 1){
+        secOne.style.display = "block";
+    }else if(sectionNumber == 2){
+        secTwo.style.display = "block";
+    }else if(sectionNumber == 3){
+        secThree.style.display = "block";    
+    }else if(sectionNumber == 4){
+        secFour.style.display = "block";      
+    }else if(sectionNumber == 5){
+        secFive.style.display = "block";       
+    }else if(sectionNumber == 6){
+        secOne.style.display = "block";
+        secTwo.style.display = "block";
+        secThree.style.display = "block";
+        secFour.style.display = "block";
+        secFive.style.display = "block";
+    }else{
+        console.log("Error in sectionVisibility")
+        console.log(sectionNumber)
+    }
+    console.log(sectionNumber)
+  }
 
 /**
  * The main function that is called when the survey.html page is loaded
@@ -320,7 +367,6 @@ async function mainThread(){
     
     let schoolNames = await schoolNamesDropDown(readAPI)
     let dropDown = document.querySelector('.survey-dropDown')
-    let sectionDropDown = document.querySelector('.section-dropDown')
     let section1_results = document.querySelector('.section1_results')
     let section2_results = document.querySelector('.section2_results')
     let section3_results = document.querySelector('.section3_results')
@@ -331,6 +377,7 @@ async function mainThread(){
     })
 
     populateDropDown(schoolNames, dropDown)
+    sectionVisibility(secNum)
 }
 
 window.onload=mainThread
