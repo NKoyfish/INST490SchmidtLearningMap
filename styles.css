@@ -1,6 +1,6 @@
 #mapid {
     max-width: 100%;
-    height:700px;
+    height:480px;
     border-radius: 12px;
 }
 @media screen and (min-width: 1408px) {
@@ -134,6 +134,27 @@ input[type='checkbox'] {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.overview {
+        display: flex;
+        background-color: #efefef80;
+        color: black;
+        border-radius: 7px;
+        margin: 1rem;
+        padding: 1rem;
+        max-height: 250px;
+        width: 50%;
+        overflow-y: scroll;
+        flex-direction: column;
+}
+.overview::-webkit-scrollbar-thumb{
+    border-radius: 0px 10px 10px 0px
+}
+.overview::-webkit-scrollbar-track {
+    background-color: #31694f66;
+}
+.split {
+    display: flex;
 }
 #labelCheck input {
     transform: scale(150%);
@@ -484,14 +505,14 @@ h2 {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #ebebeb;
+    background-color: #00000000;
     -webkit-border-radius: 10px;
     border-radius: 0px 0px 10px 0px;
 }
 
 ::-webkit-scrollbar-thumb {
     border-radius: 0px 0px 10px 0px;
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 0);
     background-image: -webkit-gradient(linear,
             40% 0%,
             75% 84%,
@@ -584,11 +605,11 @@ div#HomeTitle {
     font-size: 3.5em;  
     justify-content: space-around;
     display: flex;
-    background-color: #13b16a;
+    background-color: #73b05e;
 }
 
 .navbar-menu {
-	background-color: #13b16a;
+	background-color: #73b05e;
     
 }
 .navbar-item{
