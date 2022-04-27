@@ -13,7 +13,7 @@
     "eslint": "^8.1.0",
     "express": "^4.17.1",
     "livereload": "^0.9.3",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.14",
     "pgcps_enviro_literacy490": "github:asandin218/pgcps_enviro_literacy490",
     "requests": "^0.3.0"
