@@ -34,22 +34,18 @@ function populateEnvFeaturesDocumentation(JSON_KEY_TO_OPTION_NAMES) {
 	}
 }
 
-// InDev
 //Get button:
-
 let topButton = document.getElementById("topBtn");
 
 // at 50px of scroll display button
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-console.log("testing")
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     topButton.style.display = "block";
   } else {
     topButton.style.display = "none";
   }
-  console.log("testing1")
 }
 
 // Scroll to the top when clicked
