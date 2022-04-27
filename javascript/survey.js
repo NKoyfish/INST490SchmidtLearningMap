@@ -309,26 +309,23 @@ topButton.addEventListener('click', topFunction)
 
 // INDEV
 
+let sone = document.getElementById("one");
+let stwo = document.getElementById("two");
+
 let secOne = document.getElementById("secOne");
 let secTwo = document.getElementById("secTwo");
 let secThree = document.getElementById("secThree");
 let secFour = document.getElementById("secFour");
 let secFive = document.getElementById("secFive");
 
-let secNum = 4;
+// let secNum = 3;
 
-// let so = document.getElementById("one").addEventListener('click', sectionNumber("1"))
-// let st = document.getElementById("two").addEventListener('click', sectionVisibility("2"))
-// let sth = document.getElementById("three").addEventListener('click', sectionVisibility("3"))
-// let sf = document.getElementById("four").addEventListener('click', sectionVisibility("4"))
-// let sfi = document.getElementById("five").addEventListener('click', sectionVisibility("5"))
-// let sAll = document.getElementById("viewAll").addEventListener('click', sectionVisibility("6"))
+// function sectionNumber(n){
+//     secNum = n;
+// }
 
-// so.addEventListener('click', secNum = 1)
-
-function sectionNumber(n){
-    secNum = n;
-}
+sone.addEventListener('click', sectionVisibility('1'))
+stwo.addEventListener('click', sectionVisibility('2'))
 
 function sectionVisibility(sectionNumber) {
     secOne.style.display = "none";
@@ -377,7 +374,6 @@ async function mainThread(){
     })
 
     populateDropDown(schoolNames, dropDown)
-    sectionVisibility(secNum)
 }
 
 window.onload=mainThread
