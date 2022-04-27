@@ -92,7 +92,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -201,7 +201,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -274,7 +274,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -347,7 +347,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -420,7 +420,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -549,7 +549,7 @@ h2 {
 
 .dark-grey,.dark-grey:hover{
     color:#fff!important;
-    background-color:#48c78e!important
+    background-color:#009345!important
 }
 
 .button{
@@ -636,7 +636,7 @@ div#HomeTitle {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: #48c78e;
+    background-color: #009345;
     color: white;
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; 
