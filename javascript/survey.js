@@ -315,7 +315,7 @@ let secThree = document.getElementById("secThree");
 let secFour = document.getElementById("secFour");
 let secFive = document.getElementById("secFive");
 
-let secNum = 6;
+let secNum = 4;
 
 // let so = document.getElementById("one").addEventListener('click', sectionNumber("1"))
 // let st = document.getElementById("two").addEventListener('click', sectionVisibility("2"))
