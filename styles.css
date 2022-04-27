@@ -605,11 +605,11 @@ div#HomeTitle {
     font-size: 3.5em;  
     justify-content: space-around;
     display: flex;
-    background-color: #13b16a;
+    background-color: #73b05e;
 }
 
 .navbar-menu {
-	background-color: #13b16a;
+	background-color: #73b05e;
     
 }
 .navbar-item{
