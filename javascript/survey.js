@@ -307,26 +307,36 @@ function scrollFunction() {
 
 topButton.addEventListener('click', topFunction)
 
-// INDEV
-
+//get section buttons
 let sone = document.getElementById("one");
 let stwo = document.getElementById("two");
+let sthree = document.getElementById("three");
+let sfour = document.getElementById("four");
+let sfive = document.getElementById("five");
+let ssix = document.getElementById("viewAll");
 
+//get sections
 let secOne = document.getElementById("secOne");
 let secTwo = document.getElementById("secTwo");
 let secThree = document.getElementById("secThree");
 let secFour = document.getElementById("secFour");
 let secFive = document.getElementById("secFive");
 
-// let secNum = 3;
+//onclick 
+sone.addEventListener('click', () =>
+sectionVisibility(1))
+stwo.addEventListener('click', () =>
+sectionVisibility(2))
+sthree.addEventListener('click', () =>
+sectionVisibility(3))
+sfour.addEventListener('click', () =>
+sectionVisibility(4))
+sfive.addEventListener('click', () =>
+sectionVisibility(5))
+ssix.addEventListener('click', () =>
+sectionVisibility(6))
 
-// function sectionNumber(n){
-//     secNum = n;
-// }
-
-sone.addEventListener('click', sectionVisibility('1'))
-stwo.addEventListener('click', sectionVisibility('2'))
-
+//section Visibility function
 function sectionVisibility(sectionNumber) {
     secOne.style.display = "none";
     secTwo.style.display = "none";
@@ -344,6 +354,7 @@ function sectionVisibility(sectionNumber) {
     }else if(sectionNumber == 5){
         secFive.style.display = "block";       
     }else if(sectionNumber == 6){
+        console.log(sectionNumber)
         secOne.style.display = "block";
         secTwo.style.display = "block";
         secThree.style.display = "block";
