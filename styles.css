@@ -92,7 +92,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -137,7 +137,7 @@ input[type='checkbox'] {
 }
 .overview {
         display: flex;
-        background-color: #efefef80;
+        background-color: #efefef;
         color: black;
         border-radius: 7px;
         margin: 1rem;
@@ -146,6 +146,7 @@ input[type='checkbox'] {
         width: 50%;
         overflow-y: scroll;
         flex-direction: column;
+        font-size: 20px;
 }
 .overview::-webkit-scrollbar-thumb{
     border-radius: 0px 10px 10px 0px
@@ -201,7 +202,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -274,7 +275,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -347,7 +348,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -420,7 +421,7 @@ input[type='checkbox'] {
     text-align: center;
     padding: 1rem;
     color: #DDD;
-    background: #48c78e;
+    background: #009345;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
@@ -549,7 +550,7 @@ h2 {
 
 .dark-grey,.dark-grey:hover{
     color:#fff!important;
-    background-color:#48c78e!important
+    background-color:#009345!important
 }
 
 .button{
@@ -624,9 +625,8 @@ div#HomeTitle {
 #EnvFeatures, #SectionRatings{
     max-width:  800px;
     text-align: left;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-
-/* InDev */
 
 #topBtn {
     display: none;
@@ -636,12 +636,13 @@ div#HomeTitle {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: #48c78e;
+    background-color: #009345;
     color: white;
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; 
     border-radius: 10px;
     font-size: 18px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
   
   #topBtn:hover {
@@ -651,3 +652,22 @@ div#HomeTitle {
   .lbl-toggle, .lbl-toggle2,.lbl-toggle3,.lbl-toggle4,.lbl-toggle5{
     text-align: left;
   } 
+  .sectionSel{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+
+  .sectionSel:hover{
+    background-color: #a1e6b896; /* Adds a dark-gray background when hover */
+  }
