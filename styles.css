@@ -647,3 +647,7 @@ div#HomeTitle {
   #topBtn:hover {
     background-color: #a1e6b896; /* Adds a dark-gray background when hover */
   }
+
+  .lbl-toggle, .lbl-toggle2,.lbl-toggle3,.lbl-toggle4,.lbl-toggle5{
+    text-align: left;
+  } 
