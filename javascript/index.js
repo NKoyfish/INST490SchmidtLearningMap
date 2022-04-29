@@ -181,6 +181,16 @@ async function displayMarkersByFeature(
   let response = await request.json();
   let markerGroup = [];
   console.log(response);
+  const greenIcon = new L.Icon({
+    iconUrl:
+      "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+    shadowUrl:
+      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
   response.forEach((item) => {
     const latitude = item.latitude;
     const longitude = item.longitude;
@@ -189,7 +199,14 @@ async function displayMarkersByFeature(
     if (feature.toLowerCase().length > 0) {
       if (item[feature].toLowerCase() == "yes") {
         // Create a marker
-        const marker = L.marker([latitude, longitude]);
+        let marker = L.marker([latitude, longitude]);
+        if (
+          item["schoolName"].indexOf("Elementary School") > 0 ||
+          item["schoolName"].indexOf("ES") > 0
+        ) {
+          console.log("found", item["schoolName"]);
+          marker = L.marker([latitude, longitude], { icon: greenIcon });
+        }
         // Add a popup to the marker
         marker
           .bindPopup(
@@ -397,6 +414,17 @@ async function mainThread() {
   let data = await fetch(
     "https://voyn795bv9.execute-api.us-east-1.amazonaws.com/Dev/read_all_dynamodb"
   );
+  function clickZoom(e) {
+    //adds a small correction because the popuppane would be out of bounds
+    //without shifting the center down
+    const t = e.target.getLatLng();
+    //shift positive means shift the center down
+    let shift = 0.06;
+    const { lat } = t;
+    const { lng } = t;
+    let newcord = [lat + shift, lng];
+    mymap.panTo(newcord);
+  }
   data = await data.json();
   let filterListText = [];
   allCheckboxes.forEach((item) => {
@@ -465,16 +493,49 @@ async function mainThread() {
         document.querySelector(".overview").appendChild(node2);
       } else {
       }
-
+      const greenIcon = new L.Icon({
+        iconUrl:
+          "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+        shadowUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      });
+      const redIcon = new L.Icon({
+        iconUrl:
+          "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+        shadowUrl:
+          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41],
+      });
       markersLayer.clearLayers();
       let markerGroup = [];
       const schoolList = document.querySelector(".school");
-      schoolList.innerHTML = "";
+      schoolList.innerHTML = "<h3>Schools:</h3>";
       if (filterList.length < 1) {
         data.forEach((school) => {
           const latitude = school.latitude;
           const longitude = school.longitude;
-          const marker = L.marker([latitude, longitude]);
+          let marker = L.marker([latitude, longitude]);
+
+          if (
+            school["schoolName"].indexOf("Elementary School") > 0 ||
+            school["schoolName"].indexOf("Elementary") > 0 ||
+            school["schoolName"].indexOf("ES") > 0
+          ) {
+            marker = L.marker([latitude, longitude], { icon: greenIcon });
+          } else if (
+            school["schoolName"].indexOf("High School") > 0 ||
+            school["schoolName"].indexOf("HS") > 0
+          ) {
+            marker = L.marker([latitude, longitude], { icon: redIcon });
+          }
+
           // Add a popup to the marker
           marker
             .bindPopup(
@@ -492,6 +553,9 @@ async function mainThread() {
             )
             .openPopup();
           // Add marker to the layer. Not displayed yet.
+          marker.addEventListener("click", (e) => {
+            clickZoom(e);
+          });
           markersLayer.addLayer(marker);
           markerGroup.push(marker);
 
@@ -509,7 +573,20 @@ async function mainThread() {
         schoolList.appendChild(schoolNode);
         const latitude = school.latitude;
         const longitude = school.longitude;
-        const marker = L.marker([latitude, longitude]);
+        let marker = L.marker([latitude, longitude]);
+        if (
+          school["schoolName"].indexOf("Elementary School") > 0 ||
+          school["schoolName"].indexOf("Elementary") > 0 ||
+          school["schoolName"].indexOf("ES") > 0
+        ) {
+          marker = L.marker([latitude, longitude], { icon: greenIcon });
+        } else if (
+          school["schoolName"].indexOf("High School") > 0 ||
+          school["schoolName"].indexOf("HS") > 0
+        ) {
+          marker = L.marker([latitude, longitude], { icon: redIcon });
+        }
+        //marker stuff here soon
         // Add a popup to the marker
         marker
           .bindPopup(
@@ -527,6 +604,10 @@ async function mainThread() {
           )
           .openPopup();
         // Add marker to the layer. Not displayed yet.
+        marker.addEventListener("click", (e) => {
+          console.log("hi");
+          clickZoom(e);
+        });
         markersLayer.addLayer(marker);
         markerGroup.push(marker);
 
@@ -539,107 +620,108 @@ async function mainThread() {
   });
 
   let lastSectionFilter = {};
+  // For individual filters
+  // populateEnvFeaturesDropDownSection(
+  //   JSON_KEY_TO_OPTION_NAMES,
+  //   sectionDropdown1,
+  //   "section1"
+  // );
+  // populateEnvFeaturesDropDownSection(
+  //   JSON_KEY_TO_OPTION_NAMES,
+  //   sectionDropdown2,
+  //   "section2"
+  // );
+  // populateEnvFeaturesDropDownSection(
+  //   JSON_KEY_TO_OPTION_NAMES,
+  //   sectionDropdown3,
+  //   "section3"
+  // );
+  // populateEnvFeaturesDropDownSection(
+  //   JSON_KEY_TO_OPTION_NAMES,
+  //   sectionDropdown4,
+  //   "section4"
+  // );
+  // populateEnvFeaturesDropDownSection(
+  //   JSON_KEY_TO_OPTION_NAMES,
+  //   sectionDropdown5,
+  //   "section5"
+  // );
 
-  populateEnvFeaturesDropDownSection(
-    JSON_KEY_TO_OPTION_NAMES,
-    sectionDropdown1,
-    "section1"
-  );
-  populateEnvFeaturesDropDownSection(
-    JSON_KEY_TO_OPTION_NAMES,
-    sectionDropdown2,
-    "section2"
-  );
-  populateEnvFeaturesDropDownSection(
-    JSON_KEY_TO_OPTION_NAMES,
-    sectionDropdown3,
-    "section3"
-  );
-  populateEnvFeaturesDropDownSection(
-    JSON_KEY_TO_OPTION_NAMES,
-    sectionDropdown4,
-    "section4"
-  );
-  populateEnvFeaturesDropDownSection(
-    JSON_KEY_TO_OPTION_NAMES,
-    sectionDropdown5,
-    "section5"
-  );
+  // sectionDropdown1.addEventListener("change", (event) => {
+  //   sectionDropdown2.value = "None";
+  //   sectionDropdown3.value = "None";
+  //   sectionDropdown4.value = "None";
+  //   sectionDropdown5.value = "None";
 
-  sectionDropdown1.addEventListener("change", (event) => {
-    sectionDropdown2.value = "None";
-    sectionDropdown3.value = "None";
-    sectionDropdown4.value = "None";
-    sectionDropdown5.value = "None";
+  //   displayMarkersByFeature(
+  //     sectionDropdown1,
+  //     mymap,
+  //     markersLayer,
+  //     event.target.value
+  //   );
 
-    displayMarkersByFeature(
-      sectionDropdown1,
-      mymap,
-      markersLayer,
-      event.target.value
-    );
-
-    console.log(event.target.value, lastSectionFilter);
-  });
-  sectionDropdown2.addEventListener("change", (event) => {
-    sectionDropdown1.value = "None";
-    sectionDropdown3.value = "None";
-    sectionDropdown4.value = "None";
-    sectionDropdown5.value = "None";
-    displayMarkersByFeature(
-      sectionDropdown2,
-      mymap,
-      markersLayer,
-      event.target.value
-    );
-  });
-  sectionDropdown3.addEventListener("change", (event) => {
-    sectionDropdown1.value = "None";
-    sectionDropdown2.value = "None";
-    sectionDropdown4.value = "None";
-    sectionDropdown5.value = "None";
-    displayMarkersByFeature(
-      sectionDropdown3,
-      mymap,
-      markersLayer,
-      event.target.value
-    );
-  });
-  sectionDropdown4.addEventListener("change", (event) => {
-    sectionDropdown1.value = "None";
-    sectionDropdown2.value = "None";
-    sectionDropdown3.value = "None";
-    sectionDropdown5.value = "None";
-    displayMarkersByFeature(
-      sectionDropdown4,
-      mymap,
-      markersLayer,
-      event.target.value
-    );
-  });
-  sectionDropdown5.addEventListener("change", (event) => {
-    sectionDropdown1.value = "None";
-    sectionDropdown2.value = "None";
-    sectionDropdown3.value = "None";
-    sectionDropdown4.value = "None";
-    displayMarkersByFeature(
-      sectionDropdown5,
-      mymap,
-      markersLayer,
-      event.target.value
-    );
-  });
+  //   console.log(event.target.value, lastSectionFilter);
+  // });
+  // sectionDropdown2.addEventListener("change", (event) => {
+  //   sectionDropdown1.value = "None";
+  //   sectionDropdown3.value = "None";
+  //   sectionDropdown4.value = "None";
+  //   sectionDropdown5.value = "None";
+  //   displayMarkersByFeature(
+  //     sectionDropdown2,
+  //     mymap,
+  //     markersLayer,
+  //     event.target.value
+  //   );
+  // });
+  // sectionDropdown3.addEventListener("change", (event) => {
+  //   sectionDropdown1.value = "None";
+  //   sectionDropdown2.value = "None";
+  //   sectionDropdown4.value = "None";
+  //   sectionDropdown5.value = "None";
+  //   displayMarkersByFeature(
+  //     sectionDropdown3,
+  //     mymap,
+  //     markersLayer,
+  //     event.target.value
+  //   );
+  // });
+  // sectionDropdown4.addEventListener("change", (event) => {
+  //   sectionDropdown1.value = "None";
+  //   sectionDropdown2.value = "None";
+  //   sectionDropdown3.value = "None";
+  //   sectionDropdown5.value = "None";
+  //   displayMarkersByFeature(
+  //     sectionDropdown4,
+  //     mymap,
+  //     markersLayer,
+  //     event.target.value
+  //   );
+  // });
+  // sectionDropdown5.addEventListener("change", (event) => {
+  //   sectionDropdown1.value = "None";
+  //   sectionDropdown2.value = "None";
+  //   sectionDropdown3.value = "None";
+  //   sectionDropdown4.value = "None";
+  //   displayMarkersByFeature(
+  //     sectionDropdown5,
+  //     mymap,
+  //     markersLayer,
+  //     event.target.value
+  //   );
+  // });
   let advancedtabFilter = document.querySelector(".advancedfiltertab");
-  let simpleFilter = document.querySelector(".toggleShow");
+  let multifilterboxes = document.querySelector(".sadvancedfiltertab");
+
   const multiFilter = document.querySelector("#multfilter");
   multiFilter.addEventListener("click", (evt) => {
     multiFilter.classList.toggle("active");
     if (advancedtabFilter.style.display === "none") {
+      multifilterboxes.style.display = "none";
       advancedtabFilter.style.display = "block";
-      simpleFilter.style.display = "none";
     } else {
+      multifilterboxes.style.display = "block";
       advancedtabFilter.style.display = "none";
-      simpleFilter.style.display = "block";
     }
   });
   const countyPerimeter = document.querySelector(".toggle-btn");
