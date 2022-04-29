@@ -21,8 +21,7 @@
    <div class="container">
       <nav class="navbar has-shadow is-success is-fixed-top">
          <div class="container has-text-centered has-text-primary-light" id="HomeTitle">
-            <div class="logo"><img
-                  src="https://pbs.twimg.com/profile_images/658729775851286528/fzjKrg6a_400x400.png"
+            <div class="logo"><img src="https://pbs.twimg.com/profile_images/658729775851286528/fzjKrg6a_400x400.png"
                   alt=""></div>
             <h2>PGCPS Green Literacy Tracker</h2>
 
@@ -38,89 +37,24 @@
          </div>
          <div class="navbar-menu" id="navLinks">
             <!-- <div class="navbar-start"> -->
-               <!-- </div> -->
-               <div class="navbar-end mr-6 pr-9">
-                  <a href="./index.html" class="navbar-item">Home</a>
-                  <a href="./survey_info.html" class="navbar-item">Survey Info</a>
-                  <a href="./documentation.html" class="navbar-item">Documentation</a>
-               </div>
-
+            <!-- </div> -->
+            <div class="navbar-end mr-6 pr-9">
+               <a href="./index.html" class="navbar-item">Home</a>
+               <a href="./survey_info.html" class="navbar-item">Survey Info</a>
+               <a href="./documentation.html" class="navbar-item">Documentation</a>
             </div>
 
          </div>
-      </nav>
+
    </div>
+   </nav>
+</div>
 
-   <div class="section middle-section">
-      <div class="columns">
-         <div class="column is-one-quarter left-column">
-            <div class="toggleShow">
-               <div class="box has-text-centered has-background-success">
-               <div class="field">
-                  <label class="label has-text-primary-light">Section 1</label>
-                  <div class="control">
-                     <div class="select dropdown">
-                        <select class="section1">
-                           <option>None</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- sec2 -->
-            <div class="box has-text-centered has-background-success">
-               <div class="field">
-                  <label class="label has-text-primary-light">Section 2</label>
-                  <div class="control">
-                     <div class="select dropdown">
-                        <select class="section2">
-                           <option>None</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- sec3 -->
-            <div class="box has-text-centered has-background-success">
-               <div class="field">
-                  <label class="label has-text-primary-light">Section 3</label>
-                  <div class="control">
-                     <div class="select dropdown">
-                        <select class="section3">
-                           <option>None</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- sec4 -->
-            <div class="box has-text-centered has-background-success">
-               <div class="field">
-                  <label class="label has-text-primary-light">Section 4</label>
-                  <div class="control">
-                     <div class="select dropdown">
-                        <select class="section4">
-                           <option>None</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- sec5 -->
-            <div class="box has-text-centered has-background-success">
-               <div class="field">
-                  <label class="label has-text-primary-light">Section 5</label>
-                  <div class="control">
-                     <div class="select dropdown">
-                        <select class="section5">
-                           <option>None</option>
-                        </select>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="advancedfiltertab" style="display: none;">
+<div class="section middle-section">
+   <div class="columns">
+      <div class="column is-one-quarter left-column">
+
+         <div class="advancedfiltertab" style="display: block">
             <div class="wrap-collabsible">
                <input id="collapsible" class="toggle active" type="checkbox">
                <label for="collapsible" class="lbl-toggle">🪴♻️&#9&#9Gardens & Recycling</label>
@@ -191,9 +125,19 @@
                   </div>
                </div>
             </div>
-            <a class="twitter-timeline" data-height="500" href="https://twitter.com/SchmidtCenter?ref_src=twsrc%5Etfw">Tweets by
-               SchmidtCenter</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+         </div>
+         <div class="sadvancedfiltertab" style="display: none;">
+
+            <div class="overview">
+               <h3>Filters:</h3>
+            </div>
+            <div class="school overview">
+               <h3>Schools:</h3>
+            </div>
+
+
          </div>
       </div>
 
@@ -210,7 +154,7 @@
                </div>
 
                <div class="item">
-                  <p>Multi Filtering</p>
+                  <p>List Matches</p>
                   <div id="multfilter" class="toggle-btn">
                      <div class="inner-circle">
                      </div>
@@ -240,14 +184,21 @@
          <div class="container ">
             <div id="mapid" class="map"></div>
          </div>
-         <div class="split">
-            <div class="overview"></div>
-            <div class="school overview">
-               <h3>Schools:</h3>
-            </div>
-         </div>
+
 
       </div>
+   </div>
+</div>
+<div class="section bottom-section">
+   <div class="column is-one-quarter">
+      <div class="twittercontainer" style="max-width:415px">
+         <a class="twitter-timeline" data-height="500"
+            href="https://twitter.com/SchmidtCenter?ref_src=twsrc%5Etfw">Tweets
+            by
+            SchmidtCenter</a>
+         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+
    </div>
 </div>
 </div>
