@@ -16,6 +16,7 @@
     <li>Execute 'pip install wheel' command</li>
     <li>Execute 'python -m pip install --upgrade pip' command</li>
     <li>Execute 'pip install express requests bs4 pymysql' command</li>
+    <li>If there were any dependencies that we failed to mention 'pip install' those as well.
   </ol>
 <h1>How to run application on a server </h1>
   <ol>
@@ -23,7 +24,7 @@
     <li>Open browser and connect to the local host</li>
     <li>http://localhost</li>
   </ol>
-<h1>The API for the server application </h1>
+<h1>The API for the server application in case AWS Lambda is hard to use</h1>
   <h2>You will need to download the keys.json file from AWS to run some of the scripts locally</h2>
   <p>Some of the api routes weren't fully set up since it appears that it was deprecated when we (2022 Spring Semester) took a look at it. We gathered this after seeing the api routes referring to incorrect python scripts paths. A guide on how to update the database should be provided via Donald or a google drive link</p>
   <ol>
