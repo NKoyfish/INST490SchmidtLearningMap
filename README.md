@@ -1,5 +1,5 @@
 <p>Title of Project: Prince George County Public School - Literacy 490</p>
-<p>Description of Project: Helps visually represent how environment-friendly schools are throughout PGC</p>
+<p>Description of Project: Helps visually represent how environmentally friendly schools are throughout PGC</p>
 <p>Link to App: http://localhost/</p>
 <p>Target Browsers: Google Chrome, Mozilla Firefox, Safari, Microsoft Edge</p>
 <p>Link to User Manual: https://github.com/asandin218/pgcps_enviro_literacy490/README.md</p><br/>
@@ -26,7 +26,7 @@
   </ol>
 <h1>The API for the server application in case AWS Lambda is hard to use</h1>
   <h2>You will need to download the keys.json file from AWS to run some of the scripts locally</h2>
-  <p>Some of the api routes weren't fully set up since it appears that it was deprecated when we (2022 Spring Semester) took a look at it. We gathered this after seeing the api routes referring to incorrect python scripts paths. A guide on how to update the database should be provided via Donald or a google drive link</p>
+  <p>Some of the API routes weren't fully set up since it appears that it was deprecated when we (2022 Spring Semester) took a look at it. We gathered this after seeing the API routes referring to incorrect Python scripts paths. A guide on how to update the database should be provided via Donald or a Google Drive link</p>
   <ol>
     <li>To return all of the survey data</li>
       <ul> http://localhost/getAllData</ul>
