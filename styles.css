@@ -35,9 +35,34 @@ html ,body {
     min-height: 100vh;
     background-color: #c3e8d7;
 }
-body {
+.parallax {
     background-image: url('images\\lake-g793ff6252_1920.jpg');
     background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.section.bottom-section {
+        background: #182823c7;
+        background-image: url(https://www.thenatureofcities.com/TNOC/wp-content/uploads/2016/06/Chapter-8-fig-1.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: none;
+}
+.darken {
+    margin: -3em;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+    filter: blur(30%);
+    background: #3a3126c2;
+    z-index: 4;
 }
 .wrap-collabsible {
     margin-bottom: .5rem;
@@ -67,6 +92,7 @@ div.buttons{
         padding-bottom: 0.5rem;
         margin-left: 1rem;
         margin-right: 1rem;
+        margin-bottom: 0;
 }
 .buttons .item {
     display: flex;
@@ -74,7 +100,7 @@ div.buttons{
     padding-right: 1rem;
     width: 250px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 input[type='checkbox'] {
     display: none;
@@ -91,7 +117,7 @@ input[type='checkbox'] {
     text-transform: uppercase;
     text-align: center;
     padding: 1rem;
-    color: #DDD;
+    color: whitesmoke;
     background: #009345;
     cursor: pointer;
     border-radius: 7px;
@@ -140,10 +166,9 @@ input[type='checkbox'] {
         background-color: #efefef;
         color: black;
         border-radius: 7px;
-        margin: 1rem;
+        margin-bottom: 1rem;
         padding: 1rem;
         max-height: 250px;
-        width: 50%;
         overflow-y: scroll;
         flex-direction: column;
         font-size: 20px;
@@ -201,7 +226,7 @@ input[type='checkbox'] {
     text-transform: uppercase;
     text-align: center;
     padding: 1rem;
-    color: #DDD;
+    color: whitesmoke;
     background: #009345;
     cursor: pointer;
     border-radius: 7px;
@@ -274,7 +299,7 @@ input[type='checkbox'] {
     text-transform: uppercase;
     text-align: center;
     padding: 1rem;
-    color: #DDD;
+    color: whitesmoke;
     background: #009345;
     cursor: pointer;
     border-radius: 7px;
@@ -347,7 +372,7 @@ input[type='checkbox'] {
     text-transform: uppercase;
     text-align: center;
     padding: 1rem;
-    color: #DDD;
+    color: whitesmoke;
     background: #009345;
     cursor: pointer;
     border-radius: 7px;
@@ -420,7 +445,7 @@ input[type='checkbox'] {
     text-transform: uppercase;
     text-align: center;
     padding: 1rem;
-    color: #DDD;
+    color: whitesmoke;
     background: #009345;
     cursor: pointer;
     border-radius: 7px;
