@@ -24,6 +24,15 @@
     <li>Open browser and connect to the local host</li>
     <li>http://localhost</li>
   </ol>
+<h1>
+  <p>Updating current site using Heroku CLI</p>
+  <ol>
+    <li>Download the Heroku CLI for your specific OS</li>
+    <li>navigate to the git folder you cloned and type 'git remote add heroku https://git.heroku.com/pgcpsenviroliteracy490.git'</li>
+    <li>type 'heroku login' and use the credentials provided by the iconsultancy or Donald to login</li>
+    <li>After committing and pushing updates to your new repository type 'git push heroku main'</li>
+  </ol>
+</h1>
 <h1>The API for the server application in case AWS Lambda is hard to use</h1>
   <h2>You will need to download the keys.json file from AWS to run some of the scripts locally</h2>
   <p>Some of the API routes weren't fully set up since it appears that it was deprecated when we (2022 Spring Semester) took a look at it. We gathered this after seeing the API routes referring to incorrect Python scripts paths. A guide on how to update the database should be provided via Donald or a Google Drive link</p>
